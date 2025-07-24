@@ -95,7 +95,7 @@
 
 <div class="register-container">
     <h2>Register</h2>
-    <form class="register-form" action="/res_user" method="post">
+    <form class="register-form" action="/register" method="post">
         @csrf
         <div class="form-group">
             <label for="username">Name:</label>

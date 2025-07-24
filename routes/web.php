@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\cartlistController;
 use Illuminate\Support\Facades\Route;
 use App\Models\products;
 use App\http\Controllers\productsController;
@@ -23,7 +24,7 @@ Route::post("/addcart/{product}",[productsController::class,'addcart'])->middlew
 
 
 //cart
-Route::get("/cartlist",[productsController::class,'cartlist']);
+Route::get("/cartlist",[cartlistController::class,'cartlist']);
 
 Route::put("/checkout/{cartid}",[productsController::class,'checkout']);
 
@@ -32,15 +33,21 @@ Route::delete("/{id}/cartdelete",[productsController::class,'delete']);
 
 
 //login 
-Route::get("/login",[UserController::class,'login'])->name("login");
+// web.php
+Route::get("/login",[UserController::class,'loginpage'])->name("login");
 
-Route::post("/loginverify",[UserController::class,'loginverify']);
+Route::get("/register",[UserController::class,'create']);
 
-Route::get("/register",[UserController::class,'register']);
-
-Route::post("/res_user",[UserController::class,'res_user']);
+Route::post("/register",[UserController::class,'register']);
 
 Route::post("/logout",[UserController::class,'destroy']);
+
+Route::get("/verify", [UserController::class,'verifyForm'])->name('verifyForm');
+
+Route::post("/verify", [UserController::class,'verify'])->name('verify');
+
+Route::post("/loginverify", [UserController::class,'login'])->name('loginverify');
+
 
 
 
