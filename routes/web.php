@@ -3,7 +3,7 @@
 use App\Http\Controllers\cartlistController;
 use Illuminate\Support\Facades\Route;
 use App\Models\products;
-use App\http\Controllers\productsController;
+use App\http\Controllers\ProductsController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -18,9 +18,9 @@ use App\Http\Controllers\UserController;
 */
 
 //home
-Route::get("/",[productsController::class,'home']);
+Route::get("/",[ProductsController::class,'home']);
 
-Route::post("/addcart/{product}",[productsController::class,'addcart'])->middleware("auth");
+Route::post("/addcart/{product}",[ProductsController::class,'addcart'])->middleware("auth");
 
 
 //cart
@@ -32,7 +32,7 @@ Route::delete("/{id}/cartdelete",[productsController::class,'delete']);
 
 
 
-//login 
+//login
 // web.php
 Route::get("/login",[UserController::class,'loginpage'])->name("login");
 
